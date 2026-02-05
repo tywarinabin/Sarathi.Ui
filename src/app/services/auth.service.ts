@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 /**
  * Authentication API Response Structures
@@ -38,22 +39,16 @@ export type LoginResponse = LoginSuccessResponse | LoginErrorResponse;
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = this.getApiUrl();
+  private readonly API_URL = `${environment.apiUrl}${environment.apiEndpoint}`;
   private readonly TOKEN_KEY = 'authToken';
   private readonly EMAIL_KEY = 'userEmail';
   private readonly LOGIN_TIME_KEY = 'loginTime';
   private readonly TOKEN_EXPIRY_KEY = 'tokenExpiry';
   private readonly TOKEN_TYPE_KEY = 'tokenType';
 
-  constructor(private http: HttpClient) {}
-
-  /**
-   * Get API URL from environment variables or use default
-   */
-  private getApiUrl(): string {
-    const apiUrl = (window as any)['NG_APP_API_URL'] || 'https://localhost:7254';
-    const endpoint = (window as any)['NG_APP_API_ENDPOINT'] || '/api/auth/login';
-    return `${apiUrl}${endpoint}`;
+  constructor(private http: HttpClient) {
+    console.log(`🔧 API URL: ${this.API_URL}`);
+    console.log(`🌍 Environment: ${environment.env}`);
   }
 
   /**
