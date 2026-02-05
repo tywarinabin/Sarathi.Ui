@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<div class="features-page">
+  <!-- Header -->
+  <header class="features-header">
+    <h1 class="page-title">Sarathi Features</h1>
+    <p class="page-subtitle">Discover the powerful capabilities that make Sarathi the ultimate RAG-based intelligence platform</p>
+  </header>
+
+  <!-- Features Grid -->
+  <section class="features-container">
+    <div class="features-grid">
+      <div *ngFor="let feature of features" class="feature-card">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3 class="feature-title">{{ feature.title }}</h3>
+        <p class="feature-description">{{ feature.description }}</p>
+        <ul class="feature-details">
+          <li *ngFor="let detail of feature.details">{{ detail }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2 class="cta-title">Ready to Get Started?</h2>
+    <p class="cta-subtitle">Join thousands of teams already using Sarathi</p>
+    <button class="cta-btn" (click)="navigateToLogin()">Start Free Trial</button>
+  </section>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+
+<div class="workflow-page">
+  <!-- Header -->
+  <header class="workflow-header">
+    <h1 class="page-title">How Sarathi Works</h1>
+    <p class="page-subtitle">Understanding the RAG-powered intelligence behind Sarathi</p>
+  </header>
+
+  <!-- Main Steps -->
+  <section class="steps-section">
+    <div class="steps-container">
+      <div *ngFor="let step of steps; let i = index" class="step-card" [class.reverse]="i % 2 !== 0">
+        <div class="step-number">{{ step.number }}</div>
+        <div class="step-content">
+          <div class="step-icon">{{ step.icon }}</div>
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-description">{{ step.description }}</p>
+          <p class="step-details">{{ step.details }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAG Architecture -->
+  <section class="rag-section">
+    <h2 class="rag-title">{{ ragWorkflow.title }}</h2>
+    <div class="rag-workflow">
+      <div *ngFor="let step of ragWorkflow.steps; let i = index" class="rag-step">
+        <div class="rag-step-circle">{{ i + 1 }}</div>
+        <h4 class="rag-step-title">{{ step.title }}</h4>
+        <p class="rag-step-description">{{ step.description }}</p>
+        <div class="rag-arrow" *ngIf="i < ragWorkflow.steps.length - 1">→</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits-section">
+    <h2 class="benefits-title">Why RAG Technology?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">✓</div>
+        <h3 class="benefit-title">Accuracy</h3>
+        <p class="benefit-description">Responses grounded in your actual data, reducing hallucinations</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">✓</div>
+        <h3 class="benefit-title">Up-to-Date</h3>
+        <p class="benefit-description">Always current with your latest documents and information</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">✓</div>
+        <h3 class="benefit-title">Transparent</h3>
+        <p class="benefit-description">Citations and sources provided for every answer</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">✓</div>
+        <h3 class="benefit-title">Secure</h3>
+        <p class="benefit-description">Your data stays in your control, never used for training</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title">Ready to Experience Sarathi?</h2>
+    <button class="cta-btn" (click)="navigateToLogin()">Get Started Now</button>
+  </section>
+</div>
+
+<app-footer></app-footer>

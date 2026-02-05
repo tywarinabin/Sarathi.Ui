@@ -1,24 +1,14 @@
 <!-- Navigation Bar -->
-<nav class="navbar">
-  <div class="navbar-container">
-    <div class="navbar-logo">
-      <span class="logo-icon">S</span>
-      <span class="logo-text">Sarathi</span>
-    </div>
-    <ul class="navbar-menu" [class.active]="menuOpen">
-      <li class="navbar-item"><a href="#home" class="navbar-link" (click)="menuOpen = false">Home</a></li>
-      <li class="navbar-item"><a href="#features" class="navbar-link" (click)="menuOpen = false">Features</a></li>
-      <li class="navbar-item"><a href="#reviews" class="navbar-link" (click)="menuOpen = false">Reviews</a></li>
-      <li class="navbar-item"><a href="#contact" class="navbar-link" (click)="menuOpen = false">Contact</a></li>
-      <li class="navbar-item"><button (click)="navigateToLogin()" class="navbar-link navbar-login">Login</button></li>
-    </ul>
-    <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<app-navbar></app-navbar>
+
+<!-- Success Message -->
+<div class="success-message" *ngIf="showSuccessMessage">
+  <div class="success-content">
+    <span class="success-icon">✓</span>
+    <p class="success-text">Thank you! Your message has been sent successfully.</p>
+    <button class="success-close" (click)="closeSuccessMessage()">×</button>
   </div>
-</nav>
+</div>
 
 <!-- Hero Section -->
 <section id="home" class="hero">
@@ -27,7 +17,7 @@
     <p class="hero-subtitle">Harness the power of intelligent information retrieval and generation</p>
     <div class="hero-buttons">
       <button (click)="navigateToLogin()" class="btn btn-primary">Get Started</button>
-      <a href="#features" class="btn btn-secondary">Learn More</a>
+      <button (click)="navigateToHowItWorks()" class="btn btn-secondary">How It Works</button>
     </div>
   </div>
   <div class="hero-visual">
@@ -37,7 +27,7 @@
   </div>
 </section>
 
-<!-- Features Section -->
+<!-- Features Preview Section -->
 <section id="features" class="features">
   <h2 class="features-title">Why Choose Sarathi?</h2>
   <div class="features-grid">
@@ -56,82 +46,38 @@
       <h3 class="feature-name">Intelligent</h3>
       <p class="feature-description">AI-powered understanding of context and user intent for better results</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <h3 class="feature-name">Analytics</h3>
-      <p class="feature-description">Comprehensive analytics dashboard to track performance and insights</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔗</div>
-      <h3 class="feature-name">Integration</h3>
-      <p class="feature-description">Seamless integration with your existing tools and workflows</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">👥</div>
-      <h3 class="feature-name">Multi-User</h3>
-      <p class="feature-description">Collaborate with your team in real-time with granular permissions</p>
-    </div>
+  </div>
+  <div class="features-cta">
+    <button (click)="navigateToFeatures()" class="btn btn-outline">View All Features</button>
   </div>
 </section>
 
-<!-- Chat Section -->
-<section id="chat" class="chat-section">
-  <div class="chat-container">
-    <div class="chat-demo">
-      <h3 class="chat-title">Interactive Demo</h3>
-      <div class="chat-messages">
-        <div class="message user-message">
-          <p>What are the benefits of RAG systems?</p>
-        </div>
-        <div class="message assistant-message">
-          <p>RAG (Retrieval-Augmented Generation) systems combine information retrieval with generative AI to provide accurate, contextually relevant responses. Benefits include improved accuracy, reduced hallucinations, and access to up-to-date information.</p>
-        </div>
-        <div class="message user-message">
-          <p>How does Sarathi implement RAG?</p>
-        </div>
-        <div class="message assistant-message">
-          <p>Sarathi uses advanced vector embeddings and semantic search to retrieve relevant documents, which are then fed to our language model for generation. This ensures responses are both intelligent and grounded in your data.</p>
-        </div>
+<!-- RAG Explanation Section -->
+<section class="rag-explanation">
+  <div class="rag-content">
+    <h2 class="rag-title">What is RAG Technology?</h2>
+    <p class="rag-description">
+      Retrieval-Augmented Generation (RAG) combines the power of large language models with your organization's specific knowledge base. 
+      This ensures responses are accurate, relevant, and grounded in your actual data.
+    </p>
+    <div class="rag-benefits">
+      <div class="rag-benefit">
+        <span class="rag-benefit-icon">🎯</span>
+        <h3>Accurate Responses</h3>
+        <p>Answers based on your documents, not general knowledge</p>
+      </div>
+      <div class="rag-benefit">
+        <span class="rag-benefit-icon">📚</span>
+        <h3>Always Current</h3>
+        <p>Updates in real-time as you add new information</p>
+      </div>
+      <div class="rag-benefit">
+        <span class="rag-benefit-icon">🔗</span>
+        <h3>Source Citations</h3>
+        <p>Every answer includes references to source documents</p>
       </div>
     </div>
-    <div class="chat-features">
-      <h3 class="features-list-title">Key Features</h3>
-      <ul class="features-list">
-        <li>✓ Real-time conversation support</li>
-        <li>✓ Context-aware responses</li>
-        <li>✓ Multi-language support</li>
-        <li>✓ Custom knowledge bases</li>
-        <li>✓ Chat history management</li>
-        <li>✓ Export conversations</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Blobs/Knowledge Management Section -->
-<section id="blobs" class="blobs-section">
-  <h2 class="blobs-title">Knowledge Management Hub</h2>
-  <div class="blobs-grid">
-    <div class="blob-card">
-      <div class="blob-visual">🎓</div>
-      <h3 class="blob-name">Knowledge Hub</h3>
-      <p class="blob-description">Centralized repository for all your documents and data sources</p>
-    </div>
-    <div class="blob-card">
-      <div class="blob-visual">🔍</div>
-      <h3 class="blob-name">Smart Indexing</h3>
-      <p class="blob-description">Intelligent document indexing with semantic understanding</p>
-    </div>
-    <div class="blob-card">
-      <div class="blob-visual">⚙️</div>
-      <h3 class="blob-name">Real-time Updates</h3>
-      <p class="blob-description">Dynamic knowledge base that stays current with your information</p>
-    </div>
-    <div class="blob-card">
-      <div class="blob-visual">📈</div>
-      <h3 class="blob-name">Analytics</h3>
-      <p class="blob-description">Detailed insights into knowledge base usage and effectiveness</p>
-    </div>
+    <button (click)="navigateToHowItWorks()" class="btn btn-primary">Learn How It Works</button>
   </div>
 </section>
 
@@ -154,11 +100,6 @@
       <p class="review-text">"Best investment we made for our knowledge management. Highly recommended!"</p>
       <p class="review-author">- Emma Rodriguez, Operations Director</p>
     </div>
-    <div class="review-card">
-      <div class="review-stars">⭐⭐⭐⭐⭐</div>
-      <p class="review-text">"Seamless integration and exceptional support. Sarathi exceeded all our expectations."</p>
-      <p class="review-author">- David Park, CEO</p>
-    </div>
   </div>
 </section>
 
@@ -168,59 +109,69 @@
     <div class="contact-info">
       <h3 class="contact-title">Get in Touch</h3>
       <div class="info-item">
-        <p class="info-label">Email</p>
-        <p class="info-value">contact4sarathi.com</p>
+        <span class="info-icon">📧</span>
+        <div>
+          <p class="info-label">Email</p>
+          <p class="info-value">nabin-tiwari&#64;sarathi.com</p>
+        </div>
       </div>
       <div class="info-item">
-        <p class="info-label">Phone</p>
-        <p class="info-value">+1 (555) 123-4567</p>
+        <span class="info-icon">📱</span>
+        <div>
+          <p class="info-label">Phone</p>
+          <p class="info-value">+917999710508</p>
+        </div>
       </div>
       <div class="info-item">
-        <p class="info-label">Address</p>
-        <p class="info-value">123 Innovation Drive, Tech City, TC 12345</p>
+        <span class="info-icon">📍</span>
+        <div>
+          <p class="info-label">Address</p>
+          <p class="info-value">Bhopal, Madhya Pradesh</p>
+        </div>
       </div>
     </div>
-    <form class="contact-form">
+    <form class="contact-form" (ngSubmit)="submitContactForm($event)">
+      <h3 class="form-title">Send Us a Message</h3>
       <div class="form-group">
-        <input type="text" placeholder="Your Name" class="form-input" required>
+        <label for="name" class="form-label">Your Name</label>
+        <input 
+          type="text" 
+          id="name"
+          [(ngModel)]="contactForm.name"
+          name="name"
+          placeholder="John Doe" 
+          class="form-input" 
+          required>
       </div>
       <div class="form-group">
-        <input type="email" placeholder="Your Email" class="form-input" required>
+        <label for="email" class="form-label">Your Email</label>
+        <input 
+          type="email" 
+          id="email"
+          [(ngModel)]="contactForm.email"
+          name="email"
+          placeholder="john@example.com" 
+          class="form-input" 
+          required>
       </div>
       <div class="form-group">
-        <textarea placeholder="Your Message" class="form-textarea" rows="5" required></textarea>
+        <label for="message" class="form-label">Your Message</label>
+        <textarea 
+          id="message"
+          [(ngModel)]="contactForm.message"
+          name="message"
+          placeholder="Tell us how we can help you..." 
+          class="form-textarea" 
+          rows="5" 
+          required></textarea>
       </div>
-      <button type="submit" class="form-submit">Send Message</button>
+      <button type="submit" class="form-submit">
+        <span class="submit-icon">📤</span>
+        Send Message
+      </button>
     </form>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h4 class="footer-title">Sarathi</h4>
-      <p class="footer-description">Your RAG-Based Intelligence Platform</p>
-    </div>
-    <div class="footer-section">
-      <h4 class="footer-title">Quick Links</h4>
-      <ul class="footer-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#chat">Chat</a></li>
-        <li><a href="#blobs">Knowledge Hub</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4 class="footer-title">Legal</h4>
-      <ul class="footer-links">
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Sarathi Intelligence Platform. All rights reserved.</p>
-  </div>
-</footer>
+<app-footer></app-footer>

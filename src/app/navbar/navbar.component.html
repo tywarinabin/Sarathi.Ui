@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo" (click)="navigateToHome()">
+      <span class="logo-icon">S</span>
+      <span class="logo-text">Sarathi</span>
+    </div>
+    <ul class="navbar-menu" [class.active]="menuOpen">
+      <li class="navbar-item">
+        <a class="navbar-link" (click)="scrollToSection('home')">Home</a>
+      </li>
+      <li class="navbar-item">
+        <a class="navbar-link" (click)="navigateToFeatures()">Features</a>
+      </li>
+      <li class="navbar-item">
+        <a class="navbar-link" (click)="navigateToHowItWorks()">How It Works</a>
+      </li>
+      <li class="navbar-item">
+        <a class="navbar-link" (click)="scrollToSection('reviews')">Reviews</a>
+      </li>
+      <li class="navbar-item">
+        <a class="navbar-link" (click)="scrollToSection('contact')">Contact</a>
+      </li>
+      <li class="navbar-item">
+        <button (click)="navigateToLogin()" class="navbar-link navbar-login">Login</button>
+      </li>
+    </ul>
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
