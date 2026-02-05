@@ -646,29 +646,32 @@
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 768px) {
-  /* CRITICAL FIX: Hide navbar menu by default on mobile - Centered Design */
+  /* CRITICAL FIX: Completely hide navbar menu by default - Full width when active */
   .navbar-menu {
     position: fixed;
     top: 73px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-120%);
-    width: 90%;
-    max-width: 400px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-height: 0;
     flex-direction: column;
     gap: 0;
     background: white;
     padding: 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     z-index: 999;
-    border-radius: 0.75rem;
     overflow: hidden;
     margin: 0;
+    opacity: 0;
+    visibility: hidden;
   }
 
-  /* Show menu when active class is added - Centered slide down */
+  /* Show menu when active class is added - Full width slide down */
   .navbar-menu.active {
-    transform: translateX(-50%) translateY(1rem);
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
   }
 
   .navbar-item {
@@ -763,3 +766,92 @@
   }
 
   .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .features-title,
+  .blobs-title,
+  .reviews-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 1rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.25rem;
+  }
+
+  .logo-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .features-title,
+  .blobs-title,
+  .reviews-title {
+    font-size: 1.5rem;
+  }
+
+  .feature-card,
+  .review-card,
+  .blob-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .chat-messages {
+    max-height: 300px;
+  }
+
+  .contact-form {
+    gap: 0.75rem;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95));
+    border-bottom-color: var(--neutral-border);
+  }
+
+  .navbar-menu {
+    background: #1f2937;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  }
+
+  .feature-card,
+  .chat-demo,
+  .review-card {
+    background: var(--neutral-light);
+  }
+
+  .hero-subtitle,
+  .feature-description,
+  .message,
+  .blob-description,
+  .review-text,
+  .info-value {
+    color: #d1d5db;
+  }
+}
