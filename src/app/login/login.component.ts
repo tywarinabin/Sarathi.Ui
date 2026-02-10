@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           console.log('⏱️ Token expires in:', response.expiresIn, 'seconds');
           
           // Redirect to dashboard
-          this.router.navigate(['/u']);
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           console.error('❌ Login failed:', error);
