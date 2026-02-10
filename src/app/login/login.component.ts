@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Check if token already exists, redirect to dashboard if it does
     if (this.authService.hasValidToken()) {
-      this.router.navigate(['/u']);
+      this.router.navigate(['/home']);
     }
     
     this.initializeForm();

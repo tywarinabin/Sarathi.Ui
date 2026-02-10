@@ -19,10 +19,11 @@ export const routes: Routes = [
     loadComponent: () => import('./how-it-works/how-it-works.component').then(m => m.HowItWorksComponent)
   },
   {
-    path: 'dashboard',
+    path: 'home',
     loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
     canActivate: [AuthGuard]
   },
+
   {
     path: '**',
     redirectTo: ''
